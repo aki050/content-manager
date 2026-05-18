@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head><title>管理画面</title></h:head>
+<h:body>
+  <h1>コンテンツ管理</h1>
+  <h:form>
+    <table>
+      <tr>
+        <td>タイトル:</td>
+        <td><h:inputText
+          value="#{adminBean.form.title}" /></td>
+      </tr>
+      <tr>
+        <td>説明:</td>
+        <td><h:inputTextarea
+          value="#{adminBean.form.description}"
+          rows="3" cols="30" /></td>
+      </tr>
+      <tr>
+        <td>ファイルパス:</td>
+        <td><h:inputText
+          value="#{adminBean.form.filePath}" /></td>
+      </tr>
+      <tr>
+        <td>管理者限定:</td>
+        <td><h:selectBooleanCheckbox
+          value="#{adminBean.form.adminOnly}" /></td>
+      </tr>
+    </table>
+    <h:commandButton value="保存"
+      action="#{adminBean.save}" />
+    <hr />
+    <h:dataTable value="#{adminBean.list}"
+                 var="c" border="1">
+      <h:column>
+        <f:facet name="header">ID</f:facet>
+        #{c.id}
+      </h:column>
+      <h:column>
+        <f:facet name="header">タイトル</f:facet>
+        #{c.title}
+      </h:column>
+      <h:column>
+        <f:facet name="header">操作</f:facet>
+        <h:commandButton value="編集"
+          action="#{adminBean.edit(c)}" />
+        <h:commandButton value="削除"
+ action="#{adminBean.delete(c.id)}" />
+      </h:column>
+    </h:dataTable>
+  </h:form>
+</h:body>
+</html>
