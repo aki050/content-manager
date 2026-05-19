@@ -23,7 +23,7 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
         <scope>provided</scope>
     </dependency>
     <dependency>
-        <groupId>javax.servlet</groupId>
+        <groupId>com.h2database</groupId>
         <artifactId>h2</artifactId>
         <version>1.4.200</version>
     </dependency>
